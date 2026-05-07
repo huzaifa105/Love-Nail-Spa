@@ -248,35 +248,59 @@ export default function Home() {
       </section>
 
       {/* Instagram Shoutout / Gallery */}
-      <section className="py-24 bg-brand-cream">
+      <section className="py-24 bg-brand-cream overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="space-y-4">
               <span className="text-xs uppercase tracking-[0.4em] text-brand-accent font-bold font-sans">Our Craft</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal mt-2">Captured Moments</h2>
+              <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal">Captured Moments</h2>
+              <p className="text-brand-charcoal/50 text-sm italic font-light">Artistry in every detail, relaxation in every touch.</p>
             </div>
-            <a href="#" className="flex items-center gap-2 text-sm uppercase tracking-widest font-bold text-brand-charcoal/70 hover:text-brand-accent transition-colors">
-              <Instagram size={20} /> Follow @LoveNailSpa
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-bold text-brand-charcoal group transition-all"
+            >
+              <div className="p-2 bg-brand-accent/10 rounded-full group-hover:bg-brand-accent group-hover:text-brand-cream transition-all">
+                <Instagram size={18} />
+              </div>
+              <span>Follow @LoveNailSpa</span>
             </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1526045431048-f857369aba09?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1610992015732-2449b76344cc?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1534233503533-543c1f9f21e2?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1526413232644-8a42f0fba9c8?auto=format&fit=crop&q=80&w=600",
-              "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=600"
+              { id: "1604654894610-df4909985730", title: "Signature Red" },
+              { id: "1607779097040-26e80aa78e66", title: "Pastel Perfection" },
+              { id: "1516975080664-ed2fc6a32937", title: "Professional Tools" },
+              { id: "1600007283728-22cfb7b05f27", title: "Artisan Design" },
+              { id: "1632345031435-8727f6897d53", title: "Luxury Interior" },
+              { id: "1519014816548-bf5fe059798b", title: "Premium Polish" },
+              { id: "1522337660859-02fbefca4702", title: "Calm Atmosphere" },
+              { id: "1629191092321-0599d4c7b836", title: "Precision Care" }
             ].map((img, idx) => (
               <motion.div 
                 key={idx}
-                whileHover={{ scale: 0.98 }}
-                className="aspect-square rounded-2xl overflow-hidden cursor-pointer"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.05 }}
+                whileHover={{ y: -5 }}
+                className="group relative aspect-square rounded-[2rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
               >
-                <img src={img} alt="Nail Art Showcase" className="w-full h-full object-cover" />
+                <img 
+                  src={`https://images.unsplash.com/photo-${img.id}?auto=format&fit=crop&q=80&w=800`} 
+                  alt={img.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-brand-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <span className="text-brand-cream text-[10px] uppercase tracking-[0.3em] font-bold border-b border-brand-accent/50 pb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    {img.title}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
