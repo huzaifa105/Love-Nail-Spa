@@ -1,0 +1,8 @@
+{
+  "name": "Love Nail Spa",
+  "description": "A premium, luxury nail care and relaxation experience in Longview, TX. Professional manicures, pedicures, and spa treatments in an elegant environment.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
